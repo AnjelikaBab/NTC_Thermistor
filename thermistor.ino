@@ -22,7 +22,7 @@ void loop() {
  *  where A = 0.001129148, B = 0.000234125 and C = 8.76741*10^-8  */
   temperature = (1 / (A + (B * log(Rth)) + (C * pow((log(Rth)),3))));   // Temperature in kelvin
 
-  temperature = temperature - 273.15;  // Temperature in degree celsius
+  temperature = temperature - 276.55;  // Temperature in degree celsius
   Serial.print("Temperature = ");
   Serial.print(temperature);
   Serial.println(" degree celsius");
