@@ -4,26 +4,33 @@
 const int PORT = 5555;  /* The port to listen to connections on */
 WiFiServer server(PORT);
 
-// change these values
-const String SSID = "temporary-sap-id";
-const String PASSWORD = "123456789";
+// temporary hard coding wifi credentials for testing
+const String SSID = "YOUR_WIFI_NAME";
+const String PASSWORD = "YOUR_WIFI_PASSWORD";
 
 
 void setup() {
   Serial.begin(9600);
 
-  WiFi.mode(WIFI_AP);
-  WiFi.softAP(SSID, PASSWORD, 1, false, 1);
-  Serial.print("IP address = ");
-  Serial.println(WiFi.softAPIP());
+  WiFi.mode(WIFI_STA);
+  
+  Serial.printf("Connecting to %s ", SSID);
+  WiFi.begin(SSID, PASSWORD);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    // temporary for testing feedback
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println(" connected");
+  
+  Serial.printf("IP address = %s\n", WiFi.localIP());
 
   server.begin();
   server.setNoDelay(true);  // make sure the server does not wait to collect data before sending
 
-  Serial.print("Server started and listening on: ");
-  Serial.print(WiFi.localIP());
-  Serial.print(":");
-  Serial.println(PORT);
+  Serial.printf("Server started and listening on: %s:%d\n", WiFi.localIP(), PORT);
 }
 
 void loop() {
