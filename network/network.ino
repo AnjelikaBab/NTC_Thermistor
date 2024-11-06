@@ -5,16 +5,27 @@ const int PORT = 5555;  /* The port to listen to connections on */
 WiFiServer server(PORT);
 
 // temporary hard coding wifi credentials for testing
-const String SSID = "YOUR_WIFI_NAME";
-const String PASSWORD = "YOUR_WIFI_PASSWORD";
+const String SSID = "CBY-Makerspace";
+const String PASSWORD = "W2uOttawa!";
+
+IPAddress subnet(255, 255, 255, 0);
+IPAddress gateway(192, 168, 1, 1);
+IPAddress local_IP(192, 168, 1, 184);
 
 
 void setup() {
   Serial.begin(9600);
 
   WiFi.mode(WIFI_STA);
+
+  if (WiFi.config(local_IP, gateway, subnet)) {
+    Serial.println("IP configured");
+  } else {
+    Serial.println("IP config failed");
+  }
   
-  Serial.printf("Connecting to %s ", SSID);
+  Serial.print("Connecting to ");
+  Serial.print(SSID);
   WiFi.begin(SSID, PASSWORD);
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -25,12 +36,16 @@ void setup() {
 
   Serial.println(" connected");
   
-  Serial.printf("IP address = %s\n", WiFi.localIP());
+  Serial.print("IP address = ");
+  Serial.println(WiFi.localIP().toString());
 
   server.begin();
   server.setNoDelay(true);  // make sure the server does not wait to collect data before sending
 
-  Serial.printf("Server started and listening on: %s:%d\n", WiFi.localIP(), PORT);
+  Serial.print("Server started and listening on: ");
+  Serial.print(WiFi.localIP().toString());
+  Serial.print(":");
+  Serial.println(PORT);
 }
 
 void loop() {
