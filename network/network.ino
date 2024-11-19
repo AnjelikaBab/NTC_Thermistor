@@ -5,12 +5,12 @@ const int PORT = 5555;  /* The port to listen to connections on */
 WiFiServer server(PORT);
 
 // temporary hard coding wifi credentials for testing
-const String SSID = "CBY-Makerspace";
-const String PASSWORD = "W2uOttawa!";
+const String SSID = "anWifi";
+const String PASSWORD = "zwAIeyc%i#0MzQm";
 
-IPAddress subnet(255, 255, 255, 0);
-IPAddress gateway(192, 168, 1, 1);
-IPAddress local_IP(192, 168, 1, 184);
+//IPAddress subnet(255, 255, 255, 0);
+//IPAddress gateway(192, 168, 1, 1);
+//IPAddress local_IP(192, 168, 1, 184);
 
 
 void setup() {
@@ -18,11 +18,11 @@ void setup() {
 
   WiFi.mode(WIFI_STA);
 
-  if (WiFi.config(local_IP, gateway, subnet)) {
-    Serial.println("IP configured");
-  } else {
-    Serial.println("IP config failed");
-  }
+//  if (WiFi.config(local_IP, gateway, subnet)) {
+//    Serial.println("IP configured");
+//  } else {
+//    Serial.println("IP config failed");
+//  }
   
   Serial.print("Connecting to ");
   Serial.print(SSID);
