@@ -7,8 +7,8 @@ const double B = 0.000234125;
 const double C = 0.0000000876741; 
 
 //const int batteryPin = 32;  // ADC pin to read battery voltage (adjust to your actual pin)
-//const double R1 = 6200;    // Resistor R1 (6.2k ohms)
-//const double R2_battery = 1000;    // Resistor R2 (1k ohms) for battery voltage divider
+//const double R1 = 47000;    // Resistor R1 (6.2k ohms)
+//const double R2_battery = 22000;    // Resistor R2 (1k ohms) for battery voltage divider
 //const double MIN_VOLTAGE = 6.0;  // Approximate voltage when battery is "empty"
 //const double MAX_VOLTAGE = 9.0;  // Fully charged 9V battery
 
